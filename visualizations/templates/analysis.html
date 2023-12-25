@@ -15,9 +15,12 @@
         <input type="file" name="csv_file">
         <button type="submit">Upload</button>
     </form>
-    
 
-    <script src="{% static 'scripts/analysis.js' %}"></script>
+    <div class="analysis-iframe" id="analysisIframe">
+
+    </div>
+
+    <script src="{% static 'scripts/analysis.js' %}" defer></script>
     {{ analytics|json_script:'analytics' }}
 </body>
 </html>

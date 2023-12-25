@@ -32,7 +32,7 @@ def attendanceCategories(df, destination_path, visualizations_path):
     # Pie Chart for Number of Students in Each Attendance Category
     pie_chart_attendance_categories = px.pie(names=attendance_categories, title='Pie Chart for Attendance Categories')
     # pie_chart_attendance_categories.show()
-    plotly.offline.plot(pie_chart_attendance_categories, filename=f"{destination_path}/pieChartCategories.html")
+    plotly.offline.plot(pie_chart_attendance_categories, filename=f"{destination_path}/pieChartCategories.html", auto_open=False)
     visualizations_path['CategoriesPie'] = f"{destination_path}/pieChartCategories.html"
 
 def pieChart_AttendanceStatus(df, destination_path, visualizations_path):
@@ -42,7 +42,7 @@ def pieChart_AttendanceStatus(df, destination_path, visualizations_path):
 
     pie_chart_attendance_status = px.pie(names=attendance_status_counts.index, values=attendance_status_counts.values, title='Pie Chart for Class Attendance Status')
     # pie_chart_attendance_status.show()
-    plotly.offline.plot(pie_chart_attendance_status, filename=f"{destination_path}/pieChartStatus.html")
+    plotly.offline.plot(pie_chart_attendance_status, filename=f"{destination_path}/pieChartStatus.html", auto_open=False)
     visualizations_path['StatusPie'] = f"{destination_path}/pieChartStatus.html"
 
 def attendanceBarChart(df, destination_path, visualizations_path):
@@ -53,20 +53,20 @@ def attendanceBarChart(df, destination_path, visualizations_path):
                     color='STUDENTS NAME')
 
     # bar_chart.show()
-    plotly.offline.plot(bar_chart, filename=f"{destination_path}/AllStudentsAtOnce.html")
+    plotly.offline.plot(bar_chart, filename=f"{destination_path}/AllStudentsAtOnce.html", auto_open=False)
     visualizations_path['AllAtOnceBar'] = f"{destination_path}/AllStudentsAtOnce.html"
 
 def attendanceDistributionHistogram(df, destination_path, visualizations_path):
     histogram_attendance_distribution = px.histogram(df, x='ATTENDANCE PERCENTAGE', title='Attendance Distribution Histogram', nbins=20)
     # histogram_attendance_distribution.show()
-    plotly.offline.plot(histogram_attendance_distribution, filename=f"{destination_path}/DistributionHistogram.html")
+    plotly.offline.plot(histogram_attendance_distribution, filename=f"{destination_path}/DistributionHistogram.html", auto_open=False)
     visualizations_path['DistributionHistogram'] = f"{destination_path}/DistributionHistogram.html"
 
 def barPlotForAbsentees(df, destination_path, visualizations_path):
     # Bar plot of Absent students
     bar_fig = px.bar(df, x='STUDENTS NAME', y='ABSENT', title='Number of Classes Absent')
     bar_fig.update_layout(xaxis=dict(tickangle=45))
-    plotly.offline.plot(bar_fig, filename=f"{destination_path}/Absentees.html")
+    plotly.offline.plot(bar_fig, filename=f"{destination_path}/Absentees.html", auto_open=False)
     visualizations_path['AbsenteesBar'] = f"{destination_path}/Absentees.html"
 
 def attendanceBelowCertainNumbers(df, destination_path, visualizations_path):
@@ -110,9 +110,9 @@ def attendanceBelowCertainNumbers(df, destination_path, visualizations_path):
     # table_fig.show()
     # table_below_75.show()
     # table_below_85.show()
-    plotly.offline.plot(table_fig, filename=f"{destination_path}/AllStudentsPercentages.html")
-    plotly.offline.plot(table_below_75, filename=f"{destination_path}/Below75.html")
-    plotly.offline.plot(table_below_85, filename=f"{destination_path}/Below85.html")
+    plotly.offline.plot(table_fig, filename=f"{destination_path}/AllStudentsPercentages.html", auto_open=False)
+    plotly.offline.plot(table_below_75, filename=f"{destination_path}/Below75.html", auto_open=False)
+    plotly.offline.plot(table_below_85, filename=f"{destination_path}/Below85.html", auto_open=False)
     visualizations_path['AllStudentsTable'] = f"{destination_path}/AllStudentsPercentages.html"
     visualizations_path['StudentsBelow75'] = f"{destination_path}/Below75.html"
     visualizations_path['StudentsBelow85'] = f"{destination_path}/Below85.html"
@@ -124,7 +124,7 @@ def pieChartForAttendanceRanges(df, destination_path, visualizations_path):
 
     pie_chart_attendance_ranges = px.pie(names=attendance_ranges, title='Pie Chart for Attendance Ranges')
     # pie_chart_attendance_ranges.show()
-    plotly.offline.plot(pie_chart_attendance_ranges, filename=f"{destination_path}/pieChartRanges.html")
+    plotly.offline.plot(pie_chart_attendance_ranges, filename=f"{destination_path}/pieChartRanges.html", auto_open=False)
     visualizations_path['RangesPie'] = f"{destination_path}/pieChartRanges.html"
 
 def classAttendanceStatistics(df, destination_path, visualizations_path):
@@ -133,7 +133,7 @@ def classAttendanceStatistics(df, destination_path, visualizations_path):
                                         labels={'index': 'Statistic', 'value': 'Attendance Percentage'},
                                         title='Class Attendance Statistics')
     # class_attendance_stats_chart.show()
-    plotly.offline.plot(class_attendance_stats_chart, filename=f"{destination_path}/ClassStatistics.html")
+    plotly.offline.plot(class_attendance_stats_chart, filename=f"{destination_path}/ClassStatistics.html", auto_open=False)
     visualizations_path['ClassStatisticsBar'] = f"{destination_path}/ClassStatistics.html"
 
 def runAll(table_name, db_connection):
