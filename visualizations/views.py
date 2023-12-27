@@ -25,7 +25,7 @@ def analytics(request):
         uploaded_file = request.FILES['csv_file']
 
         # Specify the destination folder
-        destination_folder = os.path.join(settings.BASE_DIR, 'static')
+        destination_folder = os.path.join(settings.BASE_DIR, 'global')
 
         # Ensure the destination folder exists, create it if not
         os.makedirs(destination_folder, exist_ok=True)
