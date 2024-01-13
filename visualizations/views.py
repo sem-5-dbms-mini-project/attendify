@@ -50,3 +50,5 @@ def analytics(request):
 
     return render(request, 'analysis.html')
 
+
+# testing git merge
