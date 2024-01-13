@@ -52,3 +52,4 @@ def analytics(request):
 
 
 # testing git merge
+# testing git commit feature and resolving merge conflicts
