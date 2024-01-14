@@ -23,13 +23,13 @@ cursor = db_connection.cursor()
 def home():
     return render('home.html')
 
-@app.route('dashboard')
+@app.route('/dashboard')
 def dashboard():
-    return "Dashboard page"
+    return render('dashboard.html')
 
-@app.route('visualization')
+@app.route('/visualization')
 def visualization():
-    return "Visualization"
+    return render('visualization.html')
 
 
 if __name__ == '__main__':
