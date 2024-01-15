@@ -1,5 +1,4 @@
 import os
-from django.conf import settings
 import pandas as pd
 import matplotlib.pyplot as plt
 import plotly
