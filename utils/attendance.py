@@ -85,10 +85,10 @@ def createAnalytics(df, table_name, cursor):
     )
 
     # Save the plots as HTML
-    pie_chart_html = pie_chart_attendance_categories.to_html(full_html=False)
-    bar_chart_html = bar_chart_attendance_status.to_html(full_html=False)
-    additional_pie_chart_html = pie_chart_attendance_status.to_html(full_html=False)
-    histogram_html = histogram_attendance_distribution.to_html(full_html=False)
+    pie_chart_html = pie_chart_attendance_categories.to_html(full_html=False, config = {'displayModeBar': False})
+    bar_chart_html = bar_chart_attendance_status.to_html(full_html=False, config = {'displayModeBar': False})
+    additional_pie_chart_html = pie_chart_attendance_status.to_html(full_html=False, config = {'displayModeBar': False})
+    histogram_html = histogram_attendance_distribution.to_html(full_html=False, config = {'displayModeBar': False})
 
     attendanceAnalytics.extend([pie_chart_html, bar_chart_html, additional_pie_chart_html, histogram_html])
 

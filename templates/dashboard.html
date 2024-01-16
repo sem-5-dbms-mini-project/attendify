@@ -268,22 +268,25 @@
 
       <!-- showing the table generated -->
       {% if classTable %}
-      <div class="">
+      <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
         <!-- Table for all students -->
-        <table class="border-4">
-          <h1>Students Attendance Table</h1>
-          <thead>
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <caption class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+            Attendance Table
+            <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">All students attendance percentage</p>
+        </caption>
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th>USN/Sr.no</th>
-              <th>Students Name</th>
-              <th>Attendance Percentage</th>
-              <th>Total Classes Held</th>
-              <th>Total Classes Attended</th>
+              <th scope="col" class="px-6 py-3">USN/Sr.no</th>
+              <th scope="col" class="px-6 py-3">Students Name</th>
+              <th scope="col" class="px-6 py-3">Attendance Percentage</th>
+              <th scope="col" class="px-6 py-3">Total Classes Held</th>
+              <th scope="col" class="px-6 py-3">Total Classes Attended</th>
             </tr>
           </thead>
           <tbody>
             {% for row in classTable %}
-            <tr>
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
               <td>{{ row[0] }}</td>
               <td>{{ row[1] }}</td>
               <td>{{ row[2] }}</td>

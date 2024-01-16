@@ -9,7 +9,7 @@
       rel="stylesheet"
       href="{{url_for('static', filename='dist/css/output.css')}}"
     />
-    <link rel="stylesheet" href="{{ url_for('static', filename='src/css/visualization.css') }}">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='src/css/visualization.css') }}"> -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
@@ -182,22 +182,24 @@
 
     <div class="p-4 sm:ml-64 mt-14">
 
-        <div class="grid grid-rows-2 grid-flow-col gap-4">
-            <div class="container chart-1">
+        <div class="flex flex-row">
+            <div class="container chart-1 basis-1/2">
                 <div id="plotly-chart1">{{ attendanceAnalytics[0] | safe }}</div>
             </div>
-            <div class="container chart-3">
+            <div class="container chart-3 basis-1/2">
                 <div id="plotly-chart3">{{ attendanceAnalytics[2] | safe }}</div>
             </div>
-            <div class="container chart-2">
+        </div>
+        <div class="flex flex-row">
+            <div class="container chart-2 basis-1/2">
                 <div id="plotly-chart2">{{ attendanceAnalytics[1] | safe }}</div>
             </div>
-            <div class="container chart-4">
+            <div class="container chart-4 basis-1/2">
                 <div id="plotly-chart4">{{ attendanceAnalytics[3] | safe }}</div>
             </div>
         </div>
 
-        <div class="grid grid-cols-3 gap-4">
+        <div class="grid grid-cols-3 gap-4 mt-8">
 
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <!-- Table for all students -->
@@ -291,8 +293,8 @@
 
         </div>
         
-        <div class="grid grid-rows-3 grid-flow-col gap-4">
-            <div class="doughnut-container">
+        <div class="flex flex-col gap-4 mt-8">
+            <div class="doughnut-container border-gray-500">
                 {% for chart_html in iaMarksAnalytics[0] %}
                     <div class="chart-container">
                         {{ chart_html | safe }}
@@ -300,11 +302,11 @@
                 {% endfor %}
             </div>
     
-            <div class="box-container">
+            <div class="box-container border-gray-500">
                 {{ box_html | safe }}
             </div>
     
-            <div class="correlation-container">
+            <div class="correlation-container border-gray-500">
                 {{ corr_html | safe }}
             </div> 
         </div>

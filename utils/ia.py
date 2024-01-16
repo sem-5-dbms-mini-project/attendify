@@ -35,7 +35,7 @@ def createInternalsAnalytics(df):
                      hole=0.3, labels={'<20': '< 20', '30-40': '30 - 40', '20-30': '20 - 30'})
 
         # Convert the plot to HTML
-        chart_html = fig.to_html(full_html=False)
+        chart_html = fig.to_html(full_html=False, config = {'displayModeBar': False})
 
         charts.append(chart_html)
 
@@ -44,7 +44,7 @@ def createInternalsAnalytics(df):
     box_fig = px.box(melted_df, x='IA Type', y='IA Score', title='Boxplot of IA Scores')
 
     # Convert the plot to HTML
-    box_html = box_fig.to_html(full_html=False)
+    box_html = box_fig.to_html(full_html=False, config = {'displayModeBar': False})
 
     # Visualization 3: Correlation heatmap for IA Marks and Attendance
     correlation_columns = ["IA I", "IA II", "IA III", "ATTENDANCE PERCENTAGE"]
@@ -52,7 +52,7 @@ def createInternalsAnalytics(df):
                          title='Correlation Heatmap for IA Marks and Attendance')
 
     # Convert the plot to HTML
-    corr_html = corr_fig.to_html(full_html=False)
+    corr_html = corr_fig.to_html(full_html=False, config = {'displayModeBar': False})
 
     iaMarksCharts.append(charts)
     iaMarksCharts.append(box_html)
