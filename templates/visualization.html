@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -10,6 +10,7 @@
       href="{{url_for('static', filename='dist/css/output.css')}}"
     />
     <link rel="stylesheet" href="{{ url_for('static', filename='src/css/visualization.css') }}">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
     <!-- top nav bar -->
@@ -180,10 +181,133 @@
     </aside>
 
     <div class="p-4 sm:ml-64 mt-14">
-        <div class="container"> {{ attendanceAnalytics[0] | safe }} </div>
-        <div class="container"> {{ attendanceAnalytics[1] | safe }} </div>
-        <div class="container"> {{ attendanceAnalytics[2] | safe }} </div>
-        <div class="container"> {{ attendanceAnalytics[3] | safe }} </div>
+
+        <div class="grid grid-rows-2 grid-flow-col gap-4">
+            <div class="container chart-1">
+                <div id="plotly-chart1">{{ attendanceAnalytics[0] | safe }}</div>
+            </div>
+            <div class="container chart-3">
+                <div id="plotly-chart3">{{ attendanceAnalytics[2] | safe }}</div>
+            </div>
+            <div class="container chart-2">
+                <div id="plotly-chart2">{{ attendanceAnalytics[1] | safe }}</div>
+            </div>
+            <div class="container chart-4">
+                <div id="plotly-chart4">{{ attendanceAnalytics[3] | safe }}</div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-4">
+
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <!-- Table for all students -->
+                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <caption class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+                    Attendance Table
+                    <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">All students attendance percentage</p>
+                </caption>
+                  <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                      <th scope="col" class="px-6 py-3">USN/Sr.no</th>
+                      <th scope="col" class="px-6 py-3">Students Name</th>
+                      <th scope="col" class="px-6 py-3">Attendance Percentage</th>
+                      <th scope="col" class="px-6 py-3">Total Classes Held</th>
+                      <th scope="col" class="px-6 py-3">Total Classes Attended</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for row in attendanceAnalytics[4] %}
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                      <td>{{ row[0] }}</td>
+                      <td>{{ row[1] }}</td>
+                      <td>{{ row[2] }}</td>
+                      <td>{{ row[3] }}</td>
+                      <td>{{ row[4] }}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+            </div>
+            
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <!-- Table for all students below 75 attendance percentage-->
+                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <caption class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+                    Attendance Table
+                    <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">All students with less than 75 percent attendance</p>
+                </caption>
+                  <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                      <th scope="col" class="px-6 py-3">USN/Sr.no</th>
+                      <th scope="col" class="px-6 py-3">Students Name</th>
+                      <th scope="col" class="px-6 py-3">Attendance Percentage</th>
+                      <th scope="col" class="px-6 py-3">Total Classes Held</th>
+                      <th scope="col" class="px-6 py-3">Total Classes Attended</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for row in attendanceAnalytics[5] %}
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                      <td>{{ row[0] }}</td>
+                      <td>{{ row[1] }}</td>
+                      <td>{{ row[2] }}</td>
+                      <td>{{ row[3] }}</td>
+                      <td>{{ row[4] }}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+            </div>
+
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <!-- Table for all students with attendance percentage below 85-->
+                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <caption class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+                    Attendance Table
+                    <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">All students with less than 85 attendance</p>
+                </caption>
+                  <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                      <th scope="col" class="px-6 py-3">USN/Sr.no</th>
+                      <th scope="col" class="px-6 py-3">Students Name</th>
+                      <th scope="col" class="px-6 py-3">Attendance Percentage</th>
+                      <th scope="col" class="px-6 py-3">Total Classes Held</th>
+                      <th scope="col" class="px-6 py-3">Total Classes Attended</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for row in attendanceAnalytics[6] %}
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                      <td>{{ row[0] }}</td>
+                      <td>{{ row[1] }}</td>
+                      <td>{{ row[2] }}</td>
+                      <td>{{ row[3] }}</td>
+                      <td>{{ row[4] }}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+            </div>
+
+        </div>
+        
+        <div class="grid grid-rows-3 grid-flow-col gap-4">
+            <div class="doughnut-container">
+                {% for chart_html in iaMarksAnalytics[0] %}
+                    <div class="chart-container">
+                        {{ chart_html | safe }}
+                    </div>
+                {% endfor %}
+            </div>
+    
+            <div class="box-container">
+                {{ box_html | safe }}
+            </div>
+    
+            <div class="correlation-container">
+                {{ corr_html | safe }}
+            </div> 
+        </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
