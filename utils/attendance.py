@@ -52,7 +52,7 @@ def createAnalytics(df, table_name, cursor):
     )
 
     # Perform data analysis and create the additional pie chart
-    attendance_status_labels = ['Low Attendance', 'Moderate Attendance', 'High Attendance']
+    attendance_status_labels = ['Low', 'Moderate', 'High']
     attendance_status_bins = [0, 75, 90, 100]
     attendance_status_counts = pd.cut(df['ATTENDANCE PERCENTAGE'], bins=attendance_status_bins, labels=attendance_status_labels).value_counts()
 

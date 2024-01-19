@@ -15,10 +15,10 @@ app = Flask(__name__)
 
 # Connect to MySQL database
 db_connection = mysql.connector.connect(
-    host='localhost',
-    user='anand',
-    password='pass',
-    database='temp_class'
+    host='Abhijnans-MacBook-Pro.local',
+    user='root',
+    password='189@2003ihba',
+    database='temp_class2'
 )
 
 
@@ -43,7 +43,6 @@ def dashboard():
 
         filePaths.append(csv_file_path)
         tableNames.append(table_name)
-        print(tableNames, "\n", tableNames[0])
 
         # get table details to show to user        
         # query = f"SELECT * FROM `{table_name}`"
