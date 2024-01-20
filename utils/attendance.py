@@ -21,7 +21,6 @@ def createAnalytics(df, table_name, cursor):
     # Create visually appealing pie chart for attendance categories using Plotly Express
     pie_chart_attendance_categories = px.pie(
         names=attendance_categories,
-        title='Pie Chart for Attendance Categories',
         color_discrete_sequence=px.colors.qualitative.Plotly,  # Set color sequence
     )
 
@@ -63,7 +62,6 @@ def createAnalytics(df, table_name, cursor):
 
     # Update layout for the additional pie chart
     pie_chart_attendance_status.update_layout(
-        title='Pie Chart for Class Attendance Status',
         margin=dict(l=20, r=20, t=50, b=20),  # Adjust margins for better layout
         paper_bgcolor='rgba(0,0,0,0)',  # Make the background transparent
         plot_bgcolor='rgba(0,0,0,0)',  # Make the plot area background transparent
