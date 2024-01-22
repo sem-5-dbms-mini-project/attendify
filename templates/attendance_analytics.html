@@ -153,23 +153,23 @@
 
         <div class="2xl:flex xl:flex lg:flex md:block sm:block flex-row gap-4">
             <div
-                class="container chart-1 basis-1/2 2xl:p-10 xl:p-10 lg:p-10 md:p-10 mb-4 sm:p-0 shadow-xl border-2 border-slate-50 bg-white">
+                class="container chart-1 basis-1/2 2xl:p-10 xl:p-10 lg:p-10 md:p-10 mb-4 sm:p-0 shadow-xl border-2 border-slate-50 bg-white rounded-lg">
                 <h1 class="mr-2 ml-4 mb-2 mt-2 sm:text-lg 2xl:text-xl">Pie Chart for Attendance Categories</h1>
                 <div id="plotly-chart1">{{ attendanceAnalytics[0] | safe }}</div>
             </div>
             <div
-                class="container chart-3 basis-1/2 2xl:p-10 xl:p-10 lg:p-10 md:p-10 mb-4 sm:p-0 shadow-xl border-2 border-slate-50 bg-white">
+                class="container chart-3 basis-1/2 2xl:p-10 xl:p-10 lg:p-10 md:p-10 mb-4 sm:p-0 shadow-xl border-2 border-slate-50 bg-white rounded-lg">
                 <h1 class="mr-2 ml-4 mb-2 mt-2 sm:text-lg 2xl:text-xl">Pie Chart for Class Attendance Status</h1>
                 <div id="plotly-chart3">{{ attendanceAnalytics[2] | safe }}</div>
             </div>
         </div>
         <div class="2xl:flex xl:flex lg:flex md:block sm:block flex-row gap-4">
             <div
-                class="container chart-2 basis-1/2 2xl:p-10 xl:p-10 lg:p-10 md:p-10 mb-4 sm:p-0 shadow-xl border-2 border-slate-50 bg-white">
+                class="container chart-2 basis-1/2 2xl:p-10 xl:p-10 lg:p-10 md:p-10 mb-4 sm:p-0 shadow-xl border-2 border-slate-50 bg-white rounded-lg">
                 <div id="plotly-chart2">{{ attendanceAnalytics[1] | safe }}</div>
             </div>
             <div
-                class="container chart-4 basis-1/2 2xl:p-10 xl:p-10 lg:p-10 md:p-10 mb-4 sm:p-0 shadow-xl border-2 border-slate-50 bg-white">
+                class="container chart-4 basis-1/2 2xl:p-10 xl:p-10 lg:p-10 md:p-10 mb-4 sm:p-0 shadow-xl border-2 border-slate-50 bg-white rounded-lg">
                 <div id="plotly-chart4">{{ attendanceAnalytics[3] | safe }}</div>
             </div>
         </div>
@@ -214,7 +214,7 @@
                         class="p-5 text-3xl font-semibold text-left rtl:text-right text-gray-900 bg-white">
                         Attendance Table
                         <p class="mt-1 text-lg font-normal text-gray-500">All students with less than
-                            85 attendance</p>
+                            85 percent attendance</p>
                     </caption>
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                         <tr>
