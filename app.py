@@ -28,11 +28,12 @@ cursor = db_connection.cursor()
 filePaths = []
 tableNames = []
 
-@app.route('/')
+
 @app.route('/home')
 def home():
     return render('home.html')
 
+@app.route('/')
 @app.route('/dashboard/', methods=['GET','POST'])
 def dashboard():
     if request.method == 'POST':
@@ -56,13 +57,21 @@ def dashboard():
 
     return render('dashboard.html', classTable=None)
 
-@app.route('/visualization')
+@app.route('/analytics/attendance')
 def visualization():
     print(tableNames)
     attendanceAnalytics = attend.runAll(tableNames[0], db_connection, cursor)
     iaMarksAnalytics = ia_marks.runAll(tableNames[0],db_connection)
 
-    return render('visualization.html', attendanceAnalytics = attendanceAnalytics, iaMarksAnalytics = iaMarksAnalytics)
+    return render('attendance_analytics.html', attendanceAnalytics = attendanceAnalytics, iaMarksAnalytics = iaMarksAnalytics)
+
+
+@app.route('/analytics/internals')
+def visualization2():
+    print(tableNames)
+    iaMarksAnalytics = ia_marks.runAll(tableNames[0],db_connection)
+
+    return render('internals_analytics.html', iaMarksAnalytics = iaMarksAnalytics)
 
 
 if __name__ == '__main__':
