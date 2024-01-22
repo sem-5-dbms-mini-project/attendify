@@ -58,7 +58,7 @@ def dashboard():
     return render('dashboard.html', classTable=None)
 
 @app.route('/analytics/attendance')
-def visualization():
+def attendance_analytics():
     print(tableNames)
     attendanceAnalytics = attend.runAll(tableNames[0], db_connection, cursor)
     iaMarksAnalytics = ia_marks.runAll(tableNames[0],db_connection)
@@ -67,11 +67,19 @@ def visualization():
 
 
 @app.route('/analytics/internals')
-def visualization2():
+def internals_analytics():
     print(tableNames)
     iaMarksAnalytics = ia_marks.runAll(tableNames[0],db_connection)
 
     return render('internals_analytics.html', iaMarksAnalytics = iaMarksAnalytics)
+
+
+@app.route('/overviewTable')
+def overview():
+    print(tableNames)
+    attendanceAnalytics = attend.runAll(tableNames[0], db_connection, cursor)
+
+    return render('overview_table.html', attendanceAnalytics = attendanceAnalytics)
 
 
 if __name__ == '__main__':

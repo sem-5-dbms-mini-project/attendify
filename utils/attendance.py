@@ -93,7 +93,7 @@ def createAnalytics(df, table_name, cursor):
     # tables below
 
     # Fetch data for all students
-    cursor.execute(f"SELECT `SR. NO`, `STUDENTS NAME`, `ATTENDANCE PERCENTAGE`, `TOTAL HELD`, `TOTAL PRESENT` FROM `{table_name}`")
+    cursor.execute(f"SELECT `SR. NO`, `STUDENTS NAME`, `ATTENDANCE PERCENTAGE`, `IA I`, `IA II`, `IA III`, `FINAL IA` FROM `{table_name}`")
     data = cursor.fetchall()
 
     # Fetch data for students with attendance less than 85%
