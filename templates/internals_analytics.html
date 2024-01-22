@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Attendance Analytics</title>
+    <title>Internals Analytics</title>
     <link rel="stylesheet" href="{{url_for('static', filename='dist/css/output.css')}}" />
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -142,128 +142,7 @@
         </div>
     </aside>
 
-    <div class="p-4 sm:ml-64 sm:mr-2 mt-14">
-
-        <div class="2xl:flex xl:flex lg:flex md:block sm:block flex-row gap-4">
-            <div
-                class="container chart-1 basis-1/2 2xl:p-10 xl:p-10 lg:p-10 md:p-10 mb-4 sm:p-0 shadow-xl border-2 border-slate-50 bg-white">
-                <h1 class="mr-2 ml-4 mb-2 mt-2 sm:text-lg 2xl:text-xl">Pie Chart for Attendance Categories</h1>
-                <div id="plotly-chart1">{{ attendanceAnalytics[0] | safe }}</div>
-            </div>
-            <div
-                class="container chart-3 basis-1/2 2xl:p-10 xl:p-10 lg:p-10 md:p-10 mb-4 sm:p-0 shadow-xl border-2 border-slate-50 bg-white">
-                <h1 class="mr-2 ml-4 mb-2 mt-2 sm:text-lg 2xl:text-xl">Pie Chart for Class Attendance Status</h1>
-                <div id="plotly-chart3">{{ attendanceAnalytics[2] | safe }}</div>
-            </div>
-        </div>
-        <div class="2xl:flex xl:flex lg:flex md:block sm:block flex-row gap-4">
-            <div
-                class="container chart-2 basis-1/2 2xl:p-10 xl:p-10 lg:p-10 md:p-10 mb-4 sm:p-0 shadow-xl border-2 border-slate-50 bg-white">
-                <div id="plotly-chart2">{{ attendanceAnalytics[1] | safe }}</div>
-            </div>
-            <div
-                class="container chart-4 basis-1/2 2xl:p-10 xl:p-10 lg:p-10 md:p-10 mb-4 sm:p-0 shadow-xl border-2 border-slate-50 bg-white">
-                <div id="plotly-chart4">{{ attendanceAnalytics[3] | safe }}</div>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-1 gap-4 mt-8">
-
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                <!-- Table for all students -->
-                <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-                    <caption class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white">
-                        Attendance Table
-                        <p class="mt-1 text-sm font-normal text-gray-500">All students attendance percentage</p>
-                    </caption>
-                    <thead class="text-xs text-gray-800 uppercase bg-gray-50">
-                        <tr>
-                            <th scope="col" class="px-6 py-3 text-center">USN/Sr.no</th>
-                            <th scope="col" class="px-6 py-3 text-center">Students Name</th>
-                            <th scope="col" class="px-6 py-3 text-center">Attendance Percentage</th>
-                            <th scope="col" class="px-6 py-3 text-center">Total Classes Held</th>
-                            <th scope="col" class="px-6 py-3 text-center">Total Classes Attended</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for row in attendanceAnalytics[4] %}
-                        <tr class="bg-white border-b">
-                            <td class="text-center">{{ row[0] }}</td>
-                            <td class="text-center">{{ row[1] }}</td>
-                            <td class="text-center">{{ row[2] }}</td>
-                            <td class="text-center">{{ row[3] }}</td>
-                            <td class="text-center">{{ row[4] }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                <!-- Table for all students below 75 attendance percentage-->
-                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                    <caption
-                        class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
-                        Attendance Table
-                        <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">All students with less than
-                            75 percent attendance</p>
-                    </caption>
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                        <tr>
-                            <th scope="col" class="px-6 py-3">USN/Sr.no</th>
-                            <th scope="col" class="px-6 py-3">Students Name</th>
-                            <th scope="col" class="px-6 py-3">Attendance Percentage</th>
-                            <th scope="col" class="px-6 py-3">Total Classes Held</th>
-                            <th scope="col" class="px-6 py-3">Total Classes Attended</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for row in attendanceAnalytics[5] %}
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <td>{{ row[0] }}</td>
-                            <td>{{ row[1] }}</td>
-                            <td>{{ row[2] }}</td>
-                            <td>{{ row[3] }}</td>
-                            <td>{{ row[4] }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                <!-- Table for all students with attendance percentage below 85-->
-                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                    <caption
-                        class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
-                        Attendance Table
-                        <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">All students with less than
-                            85 attendance</p>
-                    </caption>
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                        <tr>
-                            <th scope="col" class="px-6 py-3">USN/Sr.no</th>
-                            <th scope="col" class="px-6 py-3">Students Name</th>
-                            <th scope="col" class="px-6 py-3">Attendance Percentage</th>
-                            <th scope="col" class="px-6 py-3">Total Classes Held</th>
-                            <th scope="col" class="px-6 py-3">Total Classes Attended</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for row in attendanceAnalytics[6] %}
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <td>{{ row[0] }}</td>
-                            <td>{{ row[1] }}</td>
-                            <td>{{ row[2] }}</td>
-                            <td>{{ row[3] }}</td>
-                            <td>{{ row[4] }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-
-        </div>
+    <div class="p-4 sm:ml-64 sm:mr-2 mt-8">
 
         <div class="flex flex-col gap-4 mt-8">
             <div class="doughnut-container border-gray-500">
